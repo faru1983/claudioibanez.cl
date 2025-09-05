@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claudio Ibáñez - Diputado por la Región de Coquimbo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos personalizados y animaciones */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8; /* Un gris azulado muy claro para el fondo */
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(10, 30, 60, 0.7), rgba(10, 30, 60, 0.7)), url('https://placehold.co/1920x1080/003366/FFFFFF?text=Paisaje+de+la+Región+de+Coquimbo');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Efecto Parallax */
+        }
+
+        .text-glow {
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3), 0 0 12px rgba(52, 152, 219, 0.4);
+        }
+        
+        /* Animaciones para elementos al hacer scroll */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn-primary {
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #38bdf8; /* Celeste brillante */
+            transition: width 0.4s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .card-hover-effect {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 51, 102, 0.15);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header id="header" class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-md transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-800">
+                Claudio <span class="text-sky-500">Ibáñez</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#inicio" class="nav-link text-gray-600 hover:text-sky-500 font-medium">Inicio</a>
+                <a href="#quien-soy" class="nav-link text-gray-600 hover:text-sky-500 font-medium">Quién Soy</a>
+                <a href="#propuestas" class="nav-link text-gray-600 hover:text-sky-500 font-medium">Propuestas</a>
+                <a href="#sumate" class="nav-link text-gray-600 hover:text-sky-500 font-medium">Súmate</a>
+            </nav>
+            <div class="hidden md:flex items-center space-x-5">
+                 <a href="https://www.instagram.com/ibaneclaudio" target="_blank" class="text-gray-500 hover:text-sky-500 transition duration-300">
+                    <i class="fab fa-instagram text-xl"></i>
+                 </a>
+                 <a href="https://www.facebook.com/aclaudioibanez" target="_blank" class="text-gray-500 hover:text-sky-500 transition duration-300">
+                    <i class="fab fa-facebook text-xl"></i>
+                 </a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#inicio" class="block py-2 text-gray-600 hover:text-sky-500">Inicio</a>
+            <a href="#quien-soy" class="block py-2 text-gray-600 hover:text-sky-500">Quién Soy</a>
+            <a href="#propuestas" class="block py-2 text-gray-600 hover:text-sky-500">Propuestas</a>
+            <a href="#sumate" class="block py-2 text-gray-600 hover:text-sky-500">Súmate</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="inicio" class="hero-bg min-h-screen flex items-center justify-center text-white text-center pt-20">
+            <div class="container mx-auto px-6">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black uppercase text-glow animate-fade-in-down">
+                    Un liderazgo con <span class="text-sky-300">experiencia,</span>
+                </h1>
+                <h2 class="text-4xl md:text-6xl lg:text-7xl font-black uppercase text-glow mt-2 animate-fade-in-up delay-300">
+                    un futuro con <span class="text-sky-300">esperanza.</span>
+                </h2>
+                <p class="mt-8 text-lg md:text-xl max-w-3xl mx-auto font-light animate-fade-in delay-500">
+                    Claudio Ibáñez, tu diputado para la Región de Coquimbo. Juntos, construiremos un futuro más próspero y seguro para todas nuestras comunas.
+                </p>
+                <div class="mt-12 animate-fade-in delay-700">
+                    <a href="#propuestas" class="btn-primary bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 px-10 rounded-full text-lg uppercase shadow-lg">
+                        Conoce Mis Propuestas
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mensaje Principal Section -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <div class="max-w-4xl mx-auto">
+                     <h2 class="text-3xl md:text-4xl font-bold text-sky-800 mb-6 fade-in-up">¡Vamos con todo por nuestra región!</h2>
+                    <p class="text-lg md:text-xl text-gray-600 leading-relaxed fade-in-up" style="transition-delay: 0.2s;">
+                        La Región de Coquimbo merece liderazgo con <strong class="font-semibold text-sky-700">visión, cercanía y resultados reales</strong>. Mi compromiso es trabajar incansablemente por el bienestar de cada familia, impulsando el progreso y la justicia social en cada rincón de Elqui, Limarí y Choapa.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quien Soy Section -->
+        <section id="quien-soy" class="py-24 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2 fade-in-up">
+                        <img src="https://placehold.co/600x700/003366/FFFFFF?text=Foto+de+Claudio+Ibañez" alt="Retrato de Claudio Ibáñez" class="rounded-lg shadow-2xl w-full h-auto object-cover">
+                    </div>
+                    <div class="lg:w-1/2 fade-in-up" style="transition-delay: 0.2s;">
+                        <h2 class="text-4xl font-bold text-sky-900 mb-4">Conoce a Claudio Ibáñez</h2>
+                        <div class="w-24 h-1.5 bg-sky-500 mb-8"></div>
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                           Soy un servidor público con una profunda vocación y un fuerte arraigo en la Región de Coquimbo. Mi experiencia como ex Intendente me ha permitido conocer de cerca las necesidades y los anhelos de nuestra gente. 
+                        </p>
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                            Creo en la política como una herramienta de transformación, basada en el diálogo, la gestión eficiente y la transparencia. Mi motor es la convicción de que podemos construir una región más justa, desarrollada y con más oportunidades para todos.
+                        </p>
+                        <a href="#sumate" class="btn-primary inline-block bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-8 rounded-full text-base uppercase shadow-lg">
+                            Únete a mi equipo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Propuestas Section -->
+        <section id="propuestas" class="py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-sky-900 fade-in-up">Mis Ejes de Trabajo</h2>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto fade-in-up" style="transition-delay: 0.2s;">Propuestas concretas para impulsar el desarrollo de nuestra Región de Coquimbo.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Propuesta Card 1 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect fade-in-up" style="transition-delay: 0.3s;">
+                        <div class="text-sky-500 mb-4">
+                           <i class="fa-solid fa-arrow-trend-up fa-3x"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Reactivación Económica</h3>
+                        <p class="text-gray-600 leading-relaxed">Impulsar el emprendimiento local, atraer inversión y generar más y mejores empleos para las familias de la región.</p>
+                    </div>
+                    <!-- Propuesta Card 2 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect fade-in-up" style="transition-delay: 0.4s;">
+                        <div class="text-sky-500 mb-4">
+                            <i class="fa-solid fa-shield-halved fa-3x"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Más Seguridad para Todos</h3>
+                        <p class="text-gray-600 leading-relaxed">Fortalecer a nuestras policías, mejorar la iluminación pública y promover programas de prevención del delito en nuestros barrios.</p>
+                    </div>
+                    <!-- Propuesta Card 3 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect fade-in-up" style="transition-delay: 0.5s;">
+                        <div class="text-sky-500 mb-4">
+                            <i class="fa-solid fa-droplet fa-3x"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Gestión Hídrica y Sequía</h3>
+                        <p class="text-gray-600 leading-relaxed">Luchar por soluciones definitivas para la crisis hídrica, apoyando a nuestros agricultores y asegurando el agua para el consumo humano.</p>
+                    </div>
+                     <!-- Propuesta Card 4 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect fade-in-up" style="transition-delay: 0.6s;">
+                        <div class="text-sky-500 mb-4">
+                             <i class="fa-solid fa-heart-pulse fa-3x"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Salud Digna y Oportuna</h3>
+                        <p class="text-gray-600 leading-relaxed">Reducir las listas de espera, mejorar la infraestructura de consultorios y hospitales, y potenciar la atención primaria de salud.</p>
+                    </div>
+                     <!-- Propuesta Card 5 -->
+                     <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect fade-in-up" style="transition-delay: 0.7s;">
+                        <div class="text-sky-500 mb-4">
+                           <i class="fa-solid fa-school fa-3x"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Educación de Calidad</h3>
+                        <p class="text-gray-600 leading-relaxed">Invertir en la educación pública, dignificar la labor docente y crear más oportunidades de acceso a la educación superior para nuestros jóvenes.</p>
+                    </div>
+                     <!-- Propuesta Card 6 -->
+                     <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect fade-in-up" style="transition-delay: 0.8s;">
+                        <div class="text-sky-500 mb-4">
+                           <i class="fa-solid fa-map-location-dot fa-3x"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Descentralización Real</h3>
+                        <p class="text-gray-600 leading-relaxed">Luchar por más poder y recursos para nuestras comunas, para que las decisiones importantes se tomen aquí, en nuestra región.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Súmate Section -->
+        <section id="sumate" class="py-24 bg-sky-800 text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-4 fade-in-up">Súmate a la Campaña</h2>
+                <p class="text-lg text-sky-200 max-w-2xl mx-auto mb-10 fade-in-up" style="transition-delay: 0.2s;">Tu apoyo es fundamental para llevar nuestra voz al Congreso. ¡Construyamos juntos el futuro que la Región de Coquimbo merece!</p>
+                <div class="max-w-xl mx-auto bg-white/10 backdrop-blur-sm p-8 rounded-lg fade-in-up" style="transition-delay: 0.4s;">
+                    <form>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <input type="text" placeholder="Nombre" class="w-full bg-white/20 border-2 border-transparent focus:border-white focus:ring-0 rounded-md py-3 px-4 text-white placeholder-sky-200 transition">
+                            <input type="email" placeholder="Correo Electrónico" class="w-full bg-white/20 border-2 border-transparent focus:border-white focus:ring-0 rounded-md py-3 px-4 text-white placeholder-sky-200 transition">
+                        </div>
+                        <textarea placeholder="Déjanos tu mensaje (opcional)" rows="4" class="w-full bg-white/20 border-2 border-transparent focus:border-white focus:ring-0 rounded-md py-3 px-4 text-white placeholder-sky-200 transition mb-6"></textarea>
+                        <button type="submit" class="btn-primary w-full bg-white hover:bg-gray-200 text-sky-800 font-bold py-4 px-10 rounded-full text-lg uppercase shadow-lg">
+                            Quiero ser parte
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold">Claudio Ibáñez</h3>
+                    <p class="text-gray-400">Diputado por la Región de Coquimbo</p>
+                </div>
+                <div class="flex flex-wrap justify-center space-x-6 mb-6 md:mb-0">
+                    <a href="https://www.instagram.com/ibaneclaudio" target="_blank" class="text-gray-400 hover:text-white transition">Instagram</a>
+                    <a href="https://www.facebook.com/aclaudioibanez" target="_blank" class="text-gray-400 hover:text-white transition">Facebook</a>
+                    <a href="https://www.claudioibanez.cl" target="_blank" class="text-gray-400 hover:text-white transition">claudioibanez.cl</a>
+                    <a href="mailto:contacto@claudioibanez.cl" class="text-gray-400 hover:text-white transition">contacto@claudioibanez.cl</a>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500">&copy; 2024 Claudio Ibáñez. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script para el menú móvil
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Script para animaciones al hacer scroll
+        const animatedElements = document.querySelectorAll('.fade-in-up');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1 
+        });
+
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Script para cambiar el fondo del header al hacer scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.remove('py-2');
+                header.classList.add('py-4');
+            }
+        });
+
+    </script>
+</body>
+</html>
+
