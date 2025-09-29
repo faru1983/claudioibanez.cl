@@ -3,264 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claudio Ibáñez - Diputado por la Región de Coquimbo</title>
-    <meta name="description" content="Claudio Ibáñez, candidato a diputado por la Región de Coquimbo. Experiencia, liderazgo y propuestas para un futuro con esperanza. Súmate a la campaña.">
-    <meta name="keywords" content="Claudio Ibáñez, diputado, Región de Coquimbo, propuestas, campaña, política, Chile">
+    <title>Claudio Ibáñez - Diputado por la Región de Coquimbo | Programa Legislativo</title>
+    <meta name="description" content="Sitio oficial de Claudio Ibáñez, candidato a Diputado. Conoce mi programa legislativo con 40 iniciativas para la Región de Coquimbo.">
+    <meta name="keywords" content="Claudio Ibáñez, diputado, Región de Coquimbo, propuestas, programa legislativo, política, Chile">
     <meta name="author" content="Claudio Ibáñez">
-    <meta property="og:title" content="Claudio Ibáñez - Diputado por la Región de Coquimbo">
-    <meta property="og:description" content="Conoce las propuestas y súmate a la campaña de Claudio Ibáñez para un futuro mejor en la Región de Coquimbo.">
-    <meta property="og:image" content="https://www.claudioibanez.cl/img/chile.png">
-    <meta property="og:url" content="https://www.claudioibanez.cl">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Claudio Ibáñez - Diputado por la Región de Coquimbo">
-    <meta name="twitter:description" content="Súmate a la campaña de Claudio Ibáñez y conoce sus propuestas para la Región de Coquimbo.">
-    <meta name="twitter:image" content="https://www.claudioibanez.cl/img/chile.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
     <link rel="icon"  type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
     <link rel="manifest" href="img/favicon/site.webmanifest">
+    
     <style>
-        /* Estilos personalizados y animaciones */
+        /* General body styles */
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa; /* Fondo más neutro */
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
         }
 
+        /* Hero section background styles */
         .hero-bg {
-            background-image: linear-gradient(rgba(180, 20, 30, 0.7), rgba(180, 20, 30, 0.7)), url('img/imgen_coquimbo_1.webp');
+            background-image: url('img/hero-candidato-fondo.jpg');
+            background-color: #4f46e5; 
             background-size: cover;
+            /* Default position for desktop */
             background-position: center;
-            background-attachment: fixed; /* Efecto Parallax */
         }
 
-        .text-glow {
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3), 0 0 12px rgba(220, 53, 69, 0.4);
+        /* Reusable utility class for strong text shadow */
+        .text-shadow-strong {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         
-        /* Animaciones para elementos al hacer scroll */
-        .fade-in-up {
+        /* Fade-in animation for scroll reveals */
+        .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-
-        .fade-in-up.visible {
+        .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .btn-primary {
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
+        /* Navigation link hover effect */
         .nav-link {
             position: relative;
             transition: color 0.3s ease;
         }
-
         .nav-link::after {
             content: '';
             position: absolute;
             width: 0;
             height: 2px;
             bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #0d6efd; /* Azul oceánico */
-            transition: width 0.4s ease;
+            left: 0;
+            background-color: #dc2626;
+            transition: width 0.3s ease;
         }
-
         .nav-link:hover::after {
             width: 100%;
         }
 
-        .card-hover-effect {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* Accordion icon rotation on active state */
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
         }
-        .card-hover-effect:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(220, 53, 69, 0.15); /* Sombra roja suave */
+
+        /* Responsive adjustments for mobile hero */
+        @media (max-width: 768px) {
+            .hero-bg {
+                /* This shifts the background image to show the right side, keeping the candidate in frame on mobile. */
+                background-position: 80% 50%;
+            }
         }
     </style>
 </head>
-<body class="text-gray-800">
+<body class="text-gray-800 antialiased">
 
     <!-- Header -->
-    <header id="header" class="bg-white/95 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-md transition-all duration-300">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-red-700">
-                Claudio <span class="text-blue-600">Ibáñez</span>
+    <header id="header" class="bg-white/90 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#inicio" class="text-3xl font-bold text-gray-900">
+                Claudio <span class="text-red-600">Ibáñez</span>
             </a>
             <nav class="hidden md:flex items-center space-x-8">
-                <a href="#inicio" class="nav-link text-gray-700 hover:text-red-700 font-medium">Inicio</a>
-                <a href="#quien-soy" class="nav-link text-gray-700 hover:text-red-700 font-medium">Quién Soy</a>
-                <a href="#propuestas" class="nav-link text-gray-700 hover:text-red-700 font-medium">Propuestas</a>
-                <a href="#sumate" class="nav-link text-gray-700 hover:text-red-700 font-medium">Súmate</a>
+                <a href="#inicio" class="nav-link text-gray-700 hover:text-red-600 font-semibold">Inicio</a>
+                <a href="#quien-soy" class="nav-link text-gray-700 hover:text-red-600 font-semibold">Quién Soy</a>
+                <a href="#programa" class="nav-link text-gray-700 hover:text-red-600 font-semibold">Programa</a>
+                <a href="#contacto" class="nav-link text-gray-700 hover:text-red-600 font-semibold">Contacto</a>
             </nav>
             <div class="hidden md:flex items-center space-x-5">
-                 <a href="https://www.instagram.com/ibaneclaudio" target="_blank" class="text-gray-600 hover:text-red-700 transition duration-300">
-                    <i class="fab fa-instagram text-xl"></i>
+                 <a href="https://www.instagram.com/claudioibanezdiputado2025" target="_blank" class="text-gray-500 hover:text-red-600 transition duration-300">
+                    <i class="fab fa-instagram text-2xl"></i>
                  </a>
-                 <a href="https://www.facebook.com/aclaudioibanez" target="_blank" class="text-gray-600 hover:text-red-700 transition duration-300">
-                    <i class="fab fa-facebook text-xl"></i>
+                 <a href="https://www.facebook.com/ClaudioIbanezDiputado" target="_blank" class="text-gray-500 hover:text-red-600 transition duration-300">
+                    <i class="fab fa-facebook text-2xl"></i>
                  </a>
             </div>
-            <button id="mobile-menu-button" class="md:hidden text-gray-700">
+            <button id="mobile-menu-button" class="md:hidden text-gray-800 focus:outline-none">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-            <a href="#inicio" class="block py-2 text-gray-700 hover:text-red-700">Inicio</a>
-            <a href="#quien-soy" class="block py-2 text-gray-700 hover:text-red-700">Quién Soy</a>
-            <a href="#propuestas" class="block py-2 text-gray-700 hover:text-red-700">Propuestas</a>
-            <a href="#sumate" class="block py-2 text-gray-700 hover:text-red-700">Súmate</a>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 border-t border-gray-200">
+            <a href="#inicio" class="block py-2 text-gray-700 hover:text-red-600 font-semibold">Inicio</a>
+            <a href="#quien-soy" class="block py-2 text-gray-700 hover:text-red-600 font-semibold">Quién Soy</a>
+            <a href="#programa" class="block py-2 text-gray-700 hover:text-red-600 font-semibold">Programa</a>
+            <a href="#contacto" class="block py-2 text-gray-700 hover:text-red-600 font-semibold">Contacto</a>
         </div>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section id="inicio" class="hero-bg min-h-screen flex items-center justify-center text-white text-center pt-20">
+        <section id="inicio" class="hero-bg min-h-screen w-full flex items-center text-white">
             <div class="container mx-auto px-6">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black uppercase text-glow animate-fade-in-down">
-                    Un liderazgo con <span class="text-blue-200">experiencia,</span>
-                </h1>
-                <h2 class="text-4xl md:text-6xl lg:text-7xl font-black uppercase text-glow mt-2 animate-fade-in-up delay-300">
-                    un futuro con <span class="text-blue-200">esperanza.</span>
-                </h2>
-                <p class="mt-8 text-lg md:text-xl max-w-3xl mx-auto font-light animate-fade-in delay-500">
-                    Claudio Ibáñez, tu diputado para la Región de Coquimbo. Juntos, construiremos un futuro más próspero y seguro para todas nuestras comunas.
-                </p>
-                <div class="mt-12 animate-fade-in delay-700">
-                    <a href="#propuestas" class="btn-primary bg-red-700 hover:bg-red-800 text-white font-bold py-4 px-10 rounded-full text-lg uppercase shadow-lg">
-                        Conoce Mis Propuestas
-                    </a>
+                <!-- Centered text on mobile, left-aligned on desktop -->
+                <div class="max-w-md md:max-w-lg text-center md:text-left -mt-10 md:mt-0 mx-auto md:mx-0">
+                    <p class="text-2xl md:text-3xl font-semibold tracking-wide text-shadow-strong">Juntos hacemos el cambio</p>
+                    <h1 class="text-6xl md:text-8xl font-black uppercase my-1 tracking-tighter text-shadow-strong">Claudio Ibáñez</h1>
+                    <!-- Centered line on mobile, left-aligned on desktop -->
+                    <div class="border-t-4 border-white w-2/3 mt-3 mb-2 mx-auto md:mx-0"></div>
+                    <h2 class="text-4xl md:text-5xl font-bold uppercase tracking-widest text-shadow-strong">Diputado</h2>
+                    <!-- Centered vote circle on mobile, left-aligned on desktop -->
+                    <div class="my-6 md:my-8 flex justify-center md:justify-start">
+                        <div class="bg-white text-red-600 rounded-full w-32 h-32 md:w-36 md:h-36 flex flex-col items-center justify-center shadow-2xl transition-transform transform hover:scale-110">
+                            <span class="text-xl font-semibold -mb-2">VOTA</span>
+                            <span class="text-7xl md:text-8xl font-black leading-none">56</span>
+                        </div>
+                    </div>
+                    <p class="text-xl md:text-2xl font-bold tracking-wider uppercase text-shadow-strong">Independiente por la Región de Coquimbo</p>
                 </div>
             </div>
         </section>
 
-        <!-- Mensaje Principal Section -->
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-6 text-center">
-                <div class="max-w-4xl mx-auto">
-                     <h2 class="text-3xl md:text-4xl font-bold text-red-800 mb-6 fade-in-up">¡Vamos con todo por nuestra región!</h2>
-                    <p class="text-lg md:text-xl text-gray-700 leading-relaxed fade-in-up" style="transition-delay: 0.2s;">
-                        La Región de Coquimbo merece liderazgo con <strong class="font-semibold text-red-700">visión, cercanía y resultados reales</strong>. Mi compromiso es trabajar incansablemente por el bienestar de cada familia, impulsando el progreso y la justicia social en cada rincón de Elqui, Limarí y Choapa.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Quien Soy Section -->
-        <section id="quien-soy" class="py-24 bg-gray-50">
+        <!-- About Section -->
+        <section id="quien-soy" class="py-24 bg-white">
             <div class="container mx-auto px-6">
                 <div class="flex flex-col lg:flex-row items-center gap-12">
-                    <div class="lg:w-1/2 fade-in-up">
-                        <img src="img/imagen_claudio.webp" alt="Retrato de Claudio Ibáñez" class="rounded-lg shadow-2xl w-full h-auto object-cover">
+                    <div class="lg:w-2/5 fade-in">
+                        <img src="img/imagen_claudio.jpg" alt="Retrato de Claudio Ibáñez" class="rounded-lg shadow-2xl w-full h-auto object-cover">
                     </div>
-                    <div class="lg:w-1/2 fade-in-up" style="transition-delay: 0.2s;">
-                        <h2 class="text-4xl font-bold text-red-900 mb-4">Conoce a Claudio Ibáñez</h2>
-                        <div class="w-24 h-1.5 bg-blue-600 mb-8"></div>
+                    <div class="lg:w-3/5 fade-in" style="transition-delay: 0.2s;">
+                        <h2 class="text-4xl font-bold text-gray-900 mb-4">Mi Compromiso con la Región</h2>
+                        <div class="w-24 h-1.5 bg-red-600 mb-8"></div>
                         <p class="text-lg text-gray-700 mb-6 leading-relaxed">
                            Soy un servidor público con una profunda vocación y un fuerte arraigo en la Región de Coquimbo. Mi experiencia como ex Intendente me ha permitido conocer de cerca las necesidades y los anhelos de nuestra gente. 
                         </p>
                         <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-                            Creo en la política como una herramienta de transformación, basada en el diálogo, la gestión eficiente y la transparencia. Mi motor es la convicción de que podemos construir una región más justa, desarrollada y con más oportunidades para todos.
+                            Creo en la política como una herramienta de transformación, basada en el diálogo, la gestión eficiente y la transparencia. Mi motor es la convicción de que podemos construir una región más justa, desarrollada y con más oportunidades para todos, desde Elqui hasta Choapa.
                         </p>
-                        <a href="#sumate" class="btn-primary inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-base uppercase shadow-lg">
-                            Únete a mi equipo
-                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Propuestas Section -->
-        <section id="propuestas" class="py-24">
+        <!-- Legislative Program Section -->
+        <section id="programa" class="py-24 bg-gray-50">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-red-900 fade-in-up">Mis Ejes de Trabajo</h2>
-                    <p class="text-lg text-gray-700 mt-4 max-w-2xl mx-auto fade-in-up" style="transition-delay: 0.2s;">Propuestas concretas para impulsar el desarrollo de nuestra Región de Coquimbo.</p>
+                    <h2 class="text-4xl font-bold text-gray-900 fade-in">Programa Legislativo</h2>
+                    <p class="text-lg text-gray-700 mt-4 max-w-3xl mx-auto fade-in" style="transition-delay: 0.2s;">
+                        Les presento mi programa legislativo, con 4 ejes principales y 10 iniciativas concretas en cada uno. Una propuesta viable, surgida de la escucha ciudadana, con una visión de futuro para la Región de Coquimbo y para Chile.
+                    </p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Propuesta Card 1 -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect fade-in-up" style="transition-delay: 0.3s;">
-                        <div class="text-blue-600 mb-4">
-                           <i class="fa-solid fa-arrow-trend-up fa-3x"></i>
+                <div class="max-w-4xl mx-auto space-y-4 fade-in" style="transition-delay: 0.4s;">
+                    <!-- Axis 1 -->
+                    <div class="accordion-item bg-white border border-gray-200 rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center p-6 text-left">
+                            <div class="flex items-center space-x-4">
+                                <i class="fa-solid fa-shield-halved text-2xl text-red-600 w-8 text-center"></i>
+                                <h3 class="text-xl font-bold text-gray-800">Eje 1: Seguridad pública, combate a la delincuencia y crimen organizado</h3>
+                            </div>
+                            <i class="fa-solid fa-chevron-down accordion-icon transition-transform duration-300"></i>
+                        </button>
+                        <div class="accordion-content hidden p-6 pt-0">
+                            <ol class="list-decimal list-inside space-y-3 text-gray-600 leading-relaxed">
+                                <li>Ley para endurecer penas contra el crimen organizado (narcotráfico, trata de personas, contrabando).</li>
+                                <li>Ley que permita decomiso exprés de bienes obtenidos ilícitamente por bandas criminales.</li>
+                                <li>Fondo nacional para financiar la iluminación y cámaras de vigilancia en barrios de alta vulnerabilidad.</li>
+                                <li>Ley que obligue a disponer de policías comunitarios permanentes en las comunas más golpeadas, financiados localmente.</li>
+                                <li>Incentivos para más fiscales especializados en crimen organizado en todas las regiones.</li>
+                                <li>Reforma para crear una brigada de inteligencia policial conjunta contra el narcotráfico y crimen organizado.</li>
+                                <li>Ley que crea un sistema nacional de protección a testigos más robusto.</li>
+                                <li>Control de armas: reforzar trazabilidad y permitir uso para defensa personal con educación estatal gratuita.</li>
+                                <li>Programa de reinserción laboral para jóvenes en riesgo ligados al microtráfico.</li>
+                                <li>Ley de transparencia que obligue a informar públicamente tasas de homicidios y delitos violentos por comuna.</li>
+                            </ol>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Reactivación Económica</h3>
-                        <p class="text-gray-700 leading-relaxed">Impulsar el emprendimiento local, atraer inversión y generar más y mejores empleos para las familias de la región.</p>
                     </div>
-                    <!-- Propuesta Card 2 -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect fade-in-up" style="transition-delay: 0.4s;">
-                        <div class="text-blue-600 mb-4">
-                            <i class="fa-solid fa-shield-halved fa-3x"></i>
+                    <!-- Axis 2 -->
+                    <div class="accordion-item bg-white border border-gray-200 rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center p-6 text-left">
+                           <div class="flex items-center space-x-4">
+                                <i class="fa-solid fa-scale-balanced text-2xl text-red-600 w-8 text-center"></i>
+                                <h3 class="text-xl font-bold text-gray-800">Eje 2: Corrupción y abusos empresariales</h3>
+                            </div>
+                            <i class="fa-solid fa-chevron-down accordion-icon transition-transform duration-300"></i>
+                        </button>
+                        <div class="accordion-content hidden p-6 pt-0">
+                            <ol class="list-decimal list-inside space-y-3 text-gray-600 leading-relaxed">
+                                <li>Ley de "muerte civil" para corruptos: prohibición de por vida para ejercer cargos públicos.</li>
+                                <li>Ley de transparencia total en contratos con el Estado (publicación de montos, plazos y beneficiarios).</li>
+                                <li>Endurecer sanciones a colusiones con multas proporcionales al daño causado.</li>
+                                <li>Ley de tarifas justas: congelar cobros abusivos en servicios básicos en zonas de altos reclamos.</li>
+                                <li>Crear la Superintendencia de Defensa del Consumidor, eliminando el SERNAC.</li>
+                                <li>Ley de control de lobby en regiones, con registro público y sanciones penales por incumplimiento.</li>
+                                <li>Sistema de alerta ciudadana contra abusos en precios de medicamentos, alimentos o servicios.</li>
+                                <li>Ley que obliga a devolución automática del 100% de lo abusado a consumidores tras condena por colusión.</li>
+                                <li>Inhabilitación perpetua para directores de empresas condenadas por colusión.</li>
+                                <li>Ley que elimina el secreto bancario para combatir la corrupción y el enriquecimiento ilícito.</li>
+                            </ol>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Más Seguridad para Todos</h3>
-                        <p class="text-gray-700 leading-relaxed">Fortalecer a nuestras policías, mejorar la iluminación pública y promover programas de prevención del delito en nuestros barrios.</p>
                     </div>
-                    <!-- Propuesta Card 3 -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect fade-in-up" style="transition-delay: 0.5s;">
-                        <div class="text-blue-600 mb-4">
-                            <i class="fa-solid fa-droplet fa-3x"></i>
+                    <!-- Axis 3 -->
+                    <div class="accordion-item bg-white border border-gray-200 rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center p-6 text-left">
+                            <div class="flex items-center space-x-4">
+                                <i class="fa-solid fa-arrow-trend-up text-2xl text-red-600 w-8 text-center"></i>
+                                <h3 class="text-xl font-bold text-gray-800">Eje 3: Crecimiento económico, empleo y desarrollo sostenible</h3>
+                            </div>
+                            <i class="fa-solid fa-chevron-down accordion-icon transition-transform duration-300"></i>
+                        </button>
+                        <div class="accordion-content hidden p-6 pt-0">
+                            <ol class="list-decimal list-inside space-y-3 text-gray-600 leading-relaxed">
+                                <li>Ley de arancel cero para empresas tecnológicas que se instalen en Chile.</li>
+                                <li>Incentivo tributario por 20 años a empresas de alto valor agregado (ciencia, tecnología, energías limpias).</li>
+                                <li>Ley de impuesto a la extracción de materias primas con reinversión y tributación en la región de operación.</li>
+                                <li>Creación de Zonas de Innovación Tecnológica en regiones mineras.</li>
+                                <li>Ley de créditos fiscales para startups que inviertan en I+D.</li>
+                                <li>Fondo de capital semilla regional obligatorio administrado por universidades locales.</li>
+                                <li>Ley de promoción de economía circular y reciclaje industrial con incentivos tributarios.</li>
+                                <li>Modernizar la ley de concesiones marítimas para potenciar la acuicultura sostenible.</li>
+                                <li>Ley para agilizar permisos en proyectos de energías renovables sin reducir estándares ambientales.</li>
+                                <li>Establecer un estatuto para el trabajador digital (teletrabajo, plataformas).</li>
+                                <li>Ley para acelerar proyectos de inversión priorizados con hasta un 50% de cofinanciamiento público.</li>
+                            </ol>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Gestión Hídrica y Sequía</h3>
-                        <p class="text-gray-700 leading-relaxed">Luchar por soluciones definitivas para la crisis hídrica, apoyando a nuestros agricultores y asegurando el agua para el consumo humano.</p>
                     </div>
-                     <!-- Propuesta Card 4 -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect fade-in-up" style="transition-delay: 0.6s;">
-                        <div class="text-blue-600 mb-4">
-                             <i class="fa-solid fa-heart-pulse fa-3x"></i>
+                    <!-- Axis 4 -->
+                    <div class="accordion-item bg-white border border-gray-200 rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center p-6 text-left">
+                            <div class="flex items-center space-x-4">
+                                <i class="fa-solid fa-hand-holding-heart text-2xl text-red-600 w-8 text-center"></i>
+                                <h3 class="text-xl font-bold text-gray-800">Eje 4: Protección social y seguridad en salud, educación, pensiones y cuidados</h3>
+                            </div>
+                            <i class="fa-solid fa-chevron-down accordion-icon transition-transform duration-300"></i>
+                        </button>
+                        <div class="accordion-content hidden p-6 pt-0">
+                            <ol class="list-decimal list-inside space-y-3 text-gray-600 leading-relaxed">
+                                <li>Perfeccionar el sistema nacional de cuidados, con apoyo económico y previsional para cuidadoras/es.</li>
+                                <li>Garantizar máximo 90 días de espera para atención de especialista, con opción de atención privada.</li>
+                                <li>Ley de seguridad de medicamentos para bajar precios mediante compras públicas y farmacias populares.</li>
+                                <li>Ampliar el postnatal masculino y parental con mayor flexibilidad.</li>
+                                <li>Fondo de compensación estatal para regiones extremas en costos de salud y educación.</li>
+                                <li>Ley que obligue a transparencia total de aranceles en educación superior.</li>
+                                <li>Reforma de pensiones que asegure pensión mínima universal sobre la línea de la pobreza.</li>
+                                <li>Ley que reconozca a las enfermedades de salud mental como prioritarias, con cobertura garantizada.</li>
+                                <li>Creación de un bono de movilidad para transporte gratuito regional de adultos mayores.</li>
+                                <li>Ley que otorgue prioridad a mujeres jefas de hogar y cuidadoras en subsidios habitacionales.</li>
+                            </ol>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Salud Digna y Oportuna</h3>
-                        <p class="text-gray-700 leading-relaxed">Reducir las listas de espera, mejorar la infraestructura de consultorios y hospitales, y potenciar la atención primaria de salud.</p>
-                    </div>
-                     <!-- Propuesta Card 5 -->
-                     <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect fade-in-up" style="transition-delay: 0.7s;">
-                        <div class="text-blue-600 mb-4">
-                           <i class="fa-solid fa-school fa-3x"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Educación de Calidad</h3>
-                        <p class="text-gray-700 leading-relaxed">Invertir en la educación pública, dignificar la labor docente y crear más oportunidades de acceso a la educación superior para nuestros jóvenes.</p>
-                    </div>
-                     <!-- Propuesta Card 6 -->
-                     <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect fade-in-up" style="transition-delay: 0.8s;">
-                        <div class="text-blue-600 mb-4">
-                           <i class="fa-solid fa-map-location-dot fa-3x"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Descentralización Real</h3>
-                        <p class="text-gray-700 leading-relaxed">Luchar por más poder y recursos para nuestras comunas, para que las decisiones importantes se tomen aquí, en nuestra región.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Súmate Section -->
-        <section id="sumate" class="py-24 bg-red-800 text-white">
+        <!-- Contact Section -->
+        <section id="contacto" class="py-24 bg-slate-900 text-white">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold mb-4 fade-in-up">Súmate a la Campaña</h2>
-                <p class="text-lg text-red-100 max-w-2xl mx-auto mb-10 fade-in-up" style="transition-delay: 0.2s;">Tu apoyo es fundamental para llevar nuestra voz al Congreso. ¡Construyamos juntos el futuro que la Región de Coquimbo merece!</p>
-                <div class="max-w-xl mx-auto bg-white/10 backdrop-blur-sm p-8 rounded-lg fade-in-up" style="transition-delay: 0.4s;">
-                    <form>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <input type="text" placeholder="Nombre" class="w-full bg-white/20 border-2 border-transparent focus:border-white focus:ring-0 rounded-md py-3 px-4 text-white placeholder-red-100 transition">
-                            <input type="email" placeholder="Correo Electrónico" class="w-full bg-white/20 border-2 border-transparent focus:border-white focus:ring-0 rounded-md py-3 px-4 text-white placeholder-red-100 transition">
+                <h2 class="text-4xl font-bold mb-4 fade-in">Contacto</h2>
+                <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-10 fade-in" style="transition-delay: 0.2s;">¿Tienes alguna duda o propuesta? Escríbeme directamente. ¡Construyamos juntos el futuro de la Región de Coquimbo!</p>
+                <div class="max-w-xl mx-auto bg-slate-800 p-8 rounded-lg shadow-lg fade-in" style="transition-delay: 0.4s;">
+                    <form id="contact-form">
+                        <div class="mb-6">
+                            <input type="text" id="contact-name" placeholder="Tu Nombre" class="w-full bg-slate-700 border-2 border-transparent focus:border-red-500 focus:ring-0 rounded-md py-3 px-4 text-white placeholder-gray-400 transition" required>
                         </div>
-                        <textarea placeholder="Déjanos tu mensaje (opcional)" rows="4" class="w-full bg-white/20 border-2 border-transparent focus:border-white focus:ring-0 rounded-md py-3 px-4 text-white placeholder-red-100 transition mb-6"></textarea>
-                        <button type="submit" class="btn-primary w-full bg-white hover:bg-gray-200 text-red-800 font-bold py-4 px-10 rounded-full text-lg uppercase shadow-lg">
-                            Quiero ser parte
+                        <div class="mb-6">
+                            <textarea id="contact-message" placeholder="Tu Mensaje" rows="4" class="w-full bg-slate-700 border-2 border-transparent focus:border-red-500 focus:ring-0 rounded-md py-3 px-4 text-white placeholder-gray-400 transition" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-10 rounded-full text-lg uppercase shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center gap-3">
+                            <i class="fab fa-whatsapp text-2xl"></i>
+                            Enviar Mensaje por WhatsApp
                         </button>
                     </form>
                 </div>
@@ -269,24 +299,21 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white">
+    <footer class="bg-slate-800 text-white">
         <div class="container mx-auto px-6 py-12 text-center">
             <div class="mb-8">
                 <h3 class="text-3xl font-bold">Claudio Ibáñez</h3>
-                <p class="text-gray-400 mt-1">Diputado por la Región de Coquimbo</p>
+                <p class="text-gray-400 mt-1">Candidato a Diputado por la Región de Coquimbo</p>
             </div>
             <div class="flex items-center justify-center space-x-8 mb-10">
-                <a href="https://www.instagram.com/ibaneclaudio" target="_blank" class="text-gray-400 hover:text-red-400 transition duration-300 transform hover:scale-125">
+                <a href="https://www.instagram.com/claudioibanezdiputado2025" target="_blank" class="text-gray-400 hover:text-red-400 transition duration-300 transform hover:scale-125">
                     <i class="fab fa-instagram text-2xl"></i>
                 </a>
-                <a href="https://www.facebook.com/aclaudioibanez" target="_blank" class="text-gray-400 hover:text-red-400 transition duration-300 transform hover:scale-125">
+                <a href="https://www.facebook.com/ClaudioIbanezDiputado" target="_blank" class="text-gray-400 hover:text-red-400 transition duration-300 transform hover:scale-125">
                     <i class="fab fa-facebook text-2xl"></i>
                 </a>
-                <a href="mailto:contacto@claudioibanez.cl" class="text-gray-400 hover:text-red-400 transition duration-300 transform hover:scale-125">
+                <a href="mailto:ibanez.claudio@gmail.com" class="text-gray-400 hover:text-red-400 transition duration-300 transform hover:scale-125">
                     <i class="fas fa-envelope text-2xl"></i>
-                </a>
-                <a href="https://www.claudioibanez.cl" target="_blank" class="text-gray-400 hover:text-red-400 transition duration-300 transform hover:scale-125">
-                    <i class="fas fa-globe text-2xl"></i>
                 </a>
             </div>
             <div>
@@ -296,42 +323,90 @@
     </footer>
 
     <script>
-        // Script para el menú móvil
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Script para animaciones al hacer scroll
-        const animatedElements = document.querySelectorAll('.fade-in-up');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+        // Wait for the DOM to be fully loaded before running scripts
+        document.addEventListener('DOMContentLoaded', () => {
+    
+            // Mobile menu toggle functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+    
+            // Intersection Observer for fade-in animations on scroll
+            const animatedElements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            animatedElements.forEach(el => observer.observe(el));
+    
+            // Accordion functionality for the legislative program
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const isActive = header.classList.toggle('active');
+                    
+                    if (content) {
+                        if (isActive) {
+                            content.classList.remove('hidden');
+                            // Set maxHeight to enable transition
+                            content.style.maxHeight = content.scrollHeight + "px";
+                        } else {
+                            content.style.maxHeight = null;
+                            // Add hidden class after transition completes
+                            setTimeout(() => {
+                                content.classList.add('hidden');
+                            }, 300); // Should match transition duration
+                        }
+                    }
+                });
             });
-        }, {
-            threshold: 0.1 
-        });
+    
+            // Auto-hide header on scroll down, show on scroll up
+            let lastScrollTop = 0;
+            const header = document.getElementById('header');
+            if (header) {
+                window.addEventListener('scroll', function() {
+                    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    if (scrollTop > lastScrollTop && scrollTop > 100) {
+                        header.style.top = '-100px'; // Hide header
+                    } else {
+                        header.style.top = '0'; // Show header
+                    }
+                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+                }, false);
+            }
 
-        animatedElements.forEach(el => {
-            observer.observe(el);
-        });
+            // WhatsApp contact form handler
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
 
-        // Script para cambiar el fondo del header al hacer scroll
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('py-2');
-                header.classList.remove('py-4');
-            } else {
-                header.classList.remove('py-2');
-                header.classList.add('py-4');
+                    const nameInput = document.getElementById('contact-name');
+                    const messageInput = document.getElementById('contact-message');
+                    
+                    const name = nameInput.value.trim();
+                    const message = messageInput.value.trim();
+                    const phone = '56996366647';
+                    
+                    if (name && message) {
+                        const whatsappMessage = `Hola, mi nombre es ${name}. Te escribo desde tu página web.\n\nMensaje: ${message}`;
+                        const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(whatsappMessage)}`;
+                        
+                        window.open(whatsappURL, '_blank');
+                    }
+                });
             }
         });
-
     </script>
 </body>
 </html>
+
