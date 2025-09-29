@@ -25,6 +25,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     
+    <!-- AOS Animation Library CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <!-- Favicon -->
     <link rel="icon"  type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
@@ -33,38 +36,19 @@
     <link rel="manifest" href="img/favicon/site.webmanifest">
     
     <style>
-        /* General body styles */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6;
         }
-
-        /* Hero section background styles */
         .hero-bg {
             background-image: url('img/hero-candidato-fondo.jpg');
             background-color: #4f46e5; 
             background-size: cover;
-            /* Default position for desktop */
             background-position: center;
         }
-
-        /* Reusable utility class for strong text shadow */
         .text-shadow-strong {
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-        
-        /* Fade-in animation for scroll reveals */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Navigation link hover effect */
         .nav-link {
             position: relative;
             transition: color 0.3s ease;
@@ -82,17 +66,63 @@
         .nav-link:hover::after {
             width: 100%;
         }
-
-        /* Accordion icon rotation on active state */
         .accordion-header.active .accordion-icon {
             transform: rotate(180deg);
         }
-
-        /* Responsive adjustments for mobile hero */
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            padding-top: 66.7%; /* Aspect ratio 3:2 for mobile (683/1024) */
+            background-color: #e5e7eb;
+        }
+        .gallery-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            object-fit: cover; /* Cover for mobile */
+        }
+        .gallery-container img.active {
+            opacity: 1;
+        }
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            border: none;
+            border-radius: 9999px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .gallery-nav:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .gallery-nav.prev {
+            left: 1rem;
+        }
+        .gallery-nav.next {
+            right: 1rem;
+        }
         @media (max-width: 768px) {
             .hero-bg {
-                /* This shifts the background image to show the right side, keeping the candidate in frame on mobile. */
                 background-position: 80% 50%;
+            }
+        }
+        @media (min-width: 768px) {
+            .gallery-container {
+                padding-top: 0; /* Remove padding-based height */
+                height: 550px; /* Set a fixed height for desktop */
+            }
+            .gallery-container img {
+                object-fit: contain; /* Show the whole image without cropping on desktop */
             }
         }
     </style>
@@ -108,6 +138,7 @@
             <nav class="hidden md:flex items-center space-x-8">
                 <a href="#inicio" class="nav-link text-gray-700 hover:text-red-600 font-semibold">Inicio</a>
                 <a href="#quien-soy" class="nav-link text-gray-700 hover:text-red-600 font-semibold">Quién Soy</a>
+                <a href="#galeria" class="nav-link text-gray-700 hover:text-red-600 font-semibold">Galería</a>
                 <a href="#programa" class="nav-link text-gray-700 hover:text-red-600 font-semibold">Programa</a>
                 <a href="#contacto" class="nav-link text-gray-700 hover:text-red-600 font-semibold">Contacto</a>
             </nav>
@@ -127,6 +158,7 @@
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 border-t border-gray-200">
             <a href="#inicio" class="block py-2 text-gray-700 hover:text-red-600 font-semibold">Inicio</a>
             <a href="#quien-soy" class="block py-2 text-gray-700 hover:text-red-600 font-semibold">Quién Soy</a>
+            <a href="#galeria" class="block py-2 text-gray-700 hover:text-red-600 font-semibold">Galería</a>
             <a href="#programa" class="block py-2 text-gray-700 hover:text-red-600 font-semibold">Programa</a>
             <a href="#contacto" class="block py-2 text-gray-700 hover:text-red-600 font-semibold">Contacto</a>
         </div>
@@ -136,21 +168,18 @@
         <!-- Hero Section -->
         <section id="inicio" class="hero-bg min-h-screen w-full flex items-center text-white">
             <div class="container mx-auto px-6">
-                <!-- Centered text on mobile, left-aligned on desktop -->
                 <div class="max-w-md md:max-w-lg text-center md:text-left -mt-10 md:mt-0 mx-auto md:mx-0">
-                    <p class="text-2xl md:text-3xl font-semibold tracking-wide text-shadow-strong">Juntos hacemos el cambio</p>
-                    <h1 class="text-6xl md:text-8xl font-black uppercase my-1 tracking-tighter text-shadow-strong">Claudio Ibáñez</h1>
-                    <!-- Centered line on mobile, left-aligned on desktop -->
-                    <div class="border-t-4 border-white w-2/3 mt-3 mb-2 mx-auto md:mx-0"></div>
-                    <h2 class="text-4xl md:text-5xl font-bold uppercase tracking-widest text-shadow-strong">Diputado</h2>
-                    <!-- Centered vote circle on mobile, left-aligned on desktop -->
-                    <div class="my-6 md:my-8 flex justify-center md:justify-start">
+                    <p data-aos="fade-down" class="text-2xl md:text-3xl font-semibold tracking-wide text-shadow-strong">Juntos hacemos el cambio</p>
+                    <h1 data-aos="fade-right" data-aos-delay="100" class="text-6xl md:text-8xl font-black uppercase my-1 tracking-tighter text-shadow-strong">Claudio Ibáñez</h1>
+                    <div data-aos="fade-right" data-aos-delay="100" class="border-t-4 border-white w-2/3 mt-3 mb-2 mx-auto md:mx-0"></div>
+                    <h2 data-aos="fade-right" data-aos-delay="200" class="text-4xl md:text-5xl font-bold uppercase tracking-widest text-shadow-strong">Diputado</h2>
+                    <div data-aos="zoom-in" data-aos-delay="400" class="my-6 md:my-8 flex justify-center md:justify-start">
                         <div class="bg-white text-red-600 rounded-full w-32 h-32 md:w-36 md:h-36 flex flex-col items-center justify-center shadow-2xl transition-transform transform hover:scale-110">
                             <span class="text-xl font-semibold -mb-2">VOTA</span>
                             <span class="text-7xl md:text-8xl font-black leading-none">56</span>
                         </div>
                     </div>
-                    <p class="text-xl md:text-2xl font-bold tracking-wider uppercase text-shadow-strong">Independiente por la Región de Coquimbo</p>
+                    <p data-aos="fade-up" data-aos-delay="300" class="text-xl md:text-2xl font-bold tracking-wider uppercase text-shadow-strong">Independiente por la Región de Coquimbo</p>
                 </div>
             </div>
         </section>
@@ -159,10 +188,10 @@
         <section id="quien-soy" class="py-24 bg-white">
             <div class="container mx-auto px-6">
                 <div class="flex flex-col lg:flex-row items-center gap-12">
-                    <div class="lg:w-2/5 fade-in">
+                    <div class="lg:w-2/5" data-aos="fade-right">
                         <img src="img/imagen_claudio.jpg" alt="Retrato de Claudio Ibáñez" class="rounded-lg shadow-2xl w-full h-auto object-cover">
                     </div>
-                    <div class="lg:w-3/5 fade-in" style="transition-delay: 0.2s;">
+                    <div class="lg:w-3/5" data-aos="fade-left">
                         <h2 class="text-4xl font-bold text-gray-900 mb-4">Mi Compromiso con la Región</h2>
                         <div class="w-24 h-1.5 bg-red-600 mb-8"></div>
                         <p class="text-lg text-gray-700 mb-6 leading-relaxed">
@@ -176,16 +205,34 @@
             </div>
         </section>
 
-        <!-- Legislative Program Section -->
-        <section id="programa" class="py-24 bg-gray-50">
+        <!-- Gallery Section -->
+        <section id="galeria" class="py-24 bg-gray-50">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gray-900 fade-in">Programa Legislativo</h2>
-                    <p class="text-lg text-gray-700 mt-4 max-w-3xl mx-auto fade-in" style="transition-delay: 0.2s;">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl font-bold text-gray-900">Galería de Actividades</h2>
+                    <p class="text-lg text-gray-700 mt-4 max-w-3xl mx-auto">
+                        Recorriendo cada rincón de nuestra región, escuchando y compartiendo con los vecinos y vecinas.
+                    </p>
+                </div>
+                <div id="image-gallery" data-aos="zoom-in" class="gallery-container rounded-lg shadow-xl overflow-hidden">
+                    <!-- Images will be injected here by JavaScript -->
+                    <!-- Navigation arrows -->
+                    <button id="gallery-prev" class="gallery-nav prev"><i class="fas fa-chevron-left"></i></button>
+                    <button id="gallery-next" class="gallery-nav next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legislative Program Section -->
+        <section id="programa" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl font-bold text-gray-900">Programa Legislativo</h2>
+                    <p class="text-lg text-gray-700 mt-4 max-w-3xl mx-auto">
                         Les presento mi programa legislativo, con 4 ejes principales y 10 iniciativas concretas en cada uno. Una propuesta viable, surgida de la escucha ciudadana, con una visión de futuro para la Región de Coquimbo y para Chile.
                     </p>
                 </div>
-                <div class="max-w-4xl mx-auto space-y-4 fade-in" style="transition-delay: 0.4s;">
+                <div class="max-w-4xl mx-auto space-y-4" data-aos="fade-up">
                     <!-- Axis 1 -->
                     <div class="accordion-item bg-white border border-gray-200 rounded-lg shadow-sm">
                         <button class="accordion-header w-full flex justify-between items-center p-6 text-left">
@@ -247,7 +294,7 @@
                             <ol class="list-decimal list-inside space-y-3 text-gray-600 leading-relaxed">
                                 <li>Ley de arancel cero para empresas tecnológicas que se instalen en Chile.</li>
                                 <li>Incentivo tributario por 20 años a empresas de alto valor agregado (ciencia, tecnología, energías limpias).</li>
-                                <li>Ley de impuesto a la extracción de materias primas con reinversión y tributación en la región de operación.</li>
+                                <li>Ley de impuesto a la extracción de materias primas con reinserción y tributación en la región de operación.</li>
                                 <li>Creación de Zonas de Innovación Tecnológica en regiones mineras.</li>
                                 <li>Ley de créditos fiscales para startups que inviertan en I+D.</li>
                                 <li>Fondo de capital semilla regional obligatorio administrado por universidades locales.</li>
@@ -290,20 +337,22 @@
         <!-- Contact Section -->
         <section id="contacto" class="py-24 bg-slate-900 text-white">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold mb-4 fade-in">Contacto</h2>
-                <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-10 fade-in" style="transition-delay: 0.2s;">¿Tienes alguna duda o propuesta? Escríbeme directamente. ¡Construyamos juntos el futuro de la Región de Coquimbo!</p>
-                <div class="max-w-xl mx-auto bg-slate-800 p-8 rounded-lg shadow-lg fade-in" style="transition-delay: 0.4s;">
+                <h2 class="text-4xl font-bold mb-4" data-aos="fade-up">Contacto</h2>
+                <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-10" data-aos="fade-up" data-aos-delay="100">¿Tienes alguna duda o propuesta? Escríbeme directamente. ¡Construyamos juntos el futuro de la Región de Coquimbo!</p>
+                <div class="max-w-xl mx-auto bg-slate-800 p-8 rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="200">
                     <form id="contact-form">
                         <div class="mb-6">
-                            <input type="text" id="contact-name" placeholder="Tu Nombre" class="w-full bg-slate-700 border-2 border-transparent focus:border-red-500 focus:ring-0 rounded-md py-3 px-4 text-white placeholder-gray-400 transition" required>
+                            <input type="text" id="contact-name" placeholder="Tu Nombre" class="w-full bg-slate-700 border-2 border-transparent focus:border-green-500 focus:ring-0 rounded-md py-3 px-4 text-white placeholder-gray-400 transition" required>
                         </div>
                         <div class="mb-6">
-                            <textarea id="contact-message" placeholder="Tu Mensaje" rows="4" class="w-full bg-slate-700 border-2 border-transparent focus:border-red-500 focus:ring-0 rounded-md py-3 px-4 text-white placeholder-gray-400 transition" required></textarea>
+                            <textarea id="contact-message" placeholder="Tu Mensaje" rows="4" class="w-full bg-slate-700 border-2 border-transparent focus:border-green-500 focus:ring-0 rounded-md py-3 px-4 text-white placeholder-gray-400 transition" required></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-10 rounded-full text-lg uppercase shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center gap-3">
-                            <i class="fab fa-whatsapp text-2xl"></i>
-                            Enviar Mensaje por WhatsApp
-                        </button>
+                        <div class="flex justify-center">
+                            <button type="submit" class="bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3 px-8 rounded-full text-base shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3">
+                                <i class="fab fa-whatsapp text-xl"></i>
+                                Enviar por WhatsApp
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -329,15 +378,27 @@
                 </a>
             </div>
             <div>
-                <p class="text-sm text-gray-500">&copy; 2025 Claudio Ibáñez. Todos los derechos reservados.</p>
+                <p class="text-sm text-gray-500">
+                    <a href="https://wa.me/56966755025?text=Quiero%20cotizar%20una%20pagina%20web" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300">
+                        Sitio creado por FaRu1983
+                    </a>
+                </p>
             </div>
         </div>
     </footer>
 
+    <!-- AOS Animation Library JS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Wait for the DOM to be fully loaded before running scripts
         document.addEventListener('DOMContentLoaded', () => {
     
+            // Initialize AOS (Animate on Scroll)
+            AOS.init({
+                duration: 800, // Animation duration in milliseconds
+                once: true,    // Whether animation should happen only once - while scrolling down
+                offset: 120,   // Offset (in px) from the original trigger point
+            });
+
             // Mobile menu toggle functionality
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
@@ -346,17 +407,6 @@
                     mobileMenu.classList.toggle('hidden');
                 });
             }
-    
-            // Intersection Observer for fade-in animations on scroll
-            const animatedElements = document.querySelectorAll('.fade-in');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-            animatedElements.forEach(el => observer.observe(el));
     
             // Accordion functionality for the legislative program
             const accordionHeaders = document.querySelectorAll('.accordion-header');
@@ -368,14 +418,14 @@
                     if (content) {
                         if (isActive) {
                             content.classList.remove('hidden');
-                            // Set maxHeight to enable transition
                             content.style.maxHeight = content.scrollHeight + "px";
                         } else {
                             content.style.maxHeight = null;
-                            // Add hidden class after transition completes
                             setTimeout(() => {
-                                content.classList.add('hidden');
-                            }, 300); // Should match transition duration
+                                if (!header.classList.contains('active')) {
+                                    content.classList.add('hidden');
+                                }
+                            }, 300);
                         }
                     }
                 });
@@ -388,9 +438,9 @@
                 window.addEventListener('scroll', function() {
                     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                     if (scrollTop > lastScrollTop && scrollTop > 100) {
-                        header.style.top = '-100px'; // Hide header
+                        header.style.top = '-100px';
                     } else {
-                        header.style.top = '0'; // Show header
+                        header.style.top = '0';
                     }
                     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
                 }, false);
@@ -401,21 +451,88 @@
             if (contactForm) {
                 contactForm.addEventListener('submit', function(event) {
                     event.preventDefault();
-
-                    const nameInput = document.getElementById('contact-name');
-                    const messageInput = document.getElementById('contact-message');
-                    
-                    const name = nameInput.value.trim();
-                    const message = messageInput.value.trim();
+                    const name = document.getElementById('contact-name').value.trim();
+                    const message = document.getElementById('contact-message').value.trim();
                     const phone = '56996366647';
                     
                     if (name && message) {
                         const whatsappMessage = `Hola, mi nombre es ${name}. Te escribo desde tu página web.\n\nMensaje: ${message}`;
                         const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(whatsappMessage)}`;
-                        
                         window.open(whatsappURL, '_blank');
                     }
                 });
+            }
+
+            // Dynamic Image Gallery with navigation
+            const galleryContainer = document.getElementById('image-gallery');
+            if(galleryContainer) {
+                const totalImages = 385;
+                const imageBaseName = 'imagen_';
+                const imageExtension = '.jpg';
+                const imagePath = 'img/galeria/';
+                const images = [];
+                for (let i = 1; i <= totalImages; i++) {
+                    const paddedIndex = i.toString().padStart(4, '0');
+                    images.push(`${imagePath}${imageBaseName}${paddedIndex}${imageExtension}`);
+                }
+
+                if (images.length > 0) {
+                    let currentIndex = 0;
+                    let slideshowInterval;
+                    const img1 = document.createElement('img');
+                    const img2 = document.createElement('img');
+                    galleryContainer.prepend(img1, img2); // Use prepend to keep arrows on top
+                    let currentImageElement = img1;
+                    let nextImageElement = img2;
+                    
+                    const prevButton = document.getElementById('gallery-prev');
+                    const nextButton = document.getElementById('gallery-next');
+
+                    function showImage(index) {
+                        nextImageElement.src = images[index];
+                        nextImageElement.onload = () => {
+                            currentImageElement.classList.remove('active');
+                            nextImageElement.classList.add('active');
+                            [currentImageElement, nextImageElement] = [nextImageElement, currentImageElement];
+                        };
+                    }
+
+                    function nextImage() {
+                        currentIndex = (currentIndex + 1) % images.length;
+                        showImage(currentIndex);
+                    }
+
+                    function prevImage() {
+                        currentIndex = (currentIndex - 1 + images.length) % images.length;
+                        showImage(currentIndex);
+                    }
+
+                    function startSlideshow() {
+                        slideshowInterval = setInterval(nextImage, 4000);
+                    }
+
+                    function resetSlideshow() {
+                        clearInterval(slideshowInterval);
+                        startSlideshow();
+                    }
+
+                    prevButton.addEventListener('click', () => {
+                        prevImage();
+                        resetSlideshow();
+                    });
+
+                    nextButton.addEventListener('click', () => {
+                        nextImage();
+                        resetSlideshow();
+                    });
+
+                    // Initial load
+                    currentImageElement.src = images[0];
+                    currentImageElement.onload = () => {
+                        currentImageElement.classList.add('active');
+                        startSlideshow();
+                    };
+                }
             }
         });
     </script>
